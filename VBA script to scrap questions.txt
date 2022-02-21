@@ -1,0 +1,30 @@
+Option Explicit
+
+Sub scrap()
+
+    Dim xmlpage As New MSXML2.XMLHTTP60
+    Dim htmldoc As New MSHTML.HTMLDocument
+    
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets(1)
+    sh.UsedRange.Clear
+    
+    Dim url As String
+    url = "https://techtfq.com/blog/practice-writing-sql-queries-using-real-dataset"
+    
+    xmlpage.Open _
+            bstrmethod:="GET", _
+            bstrUrl:=url, _
+            varAsync:=False
+            
+    xmlpage.send
+    
+    htmldoc.body.innerHTML = xmlpage.responseText
+
+    Dim strongtag As MSHTML.IHTMLElement
+
+    For Each strongtag In htmldoc.getElementsByTagName("strong")
+        Debug.Print strongtag.innerText
+    Next strongtag
+    
+End Sub
