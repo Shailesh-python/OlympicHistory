@@ -185,8 +185,9 @@ WHERE RN <=5
 ORDER BY GoldMedalWins DESC
 ```
 
---13. Fetch the top 5 most successful countries in olympics. Success is defined by no of medals won.
-
+## [Question #13](#case-study-questions)
+> Fetch the top 5 most successful countries in olympics. Success is defined by no of medals won.
+```sql
 SELECT region,GoldMedalWins FROM 
 (
 	SELECT *,
@@ -208,10 +209,12 @@ SELECT region,GoldMedalWins FROM
 )T
 WHERE RN <=5
 ORDER BY GoldMedalWins DESC
+```
 
---14. List down total gold, silver and bronze medals won by each country.
-
-;WITH CTE_REGION_MEDALS AS
+## [Question #14](#case-study-questions)
+> List down total gold, silver and bronze medals won by each country.
+```sql
+WITH CTE_REGION_MEDALS AS
 (
 	SELECT 
 		r.region,
@@ -235,10 +238,12 @@ ORDER BY GoldMedalWins DESC
 			FOR MEDAL IN ([gold],[silver],[bronze])
 		) AS PIVOT_TABLE
 	ORDER BY GOLD DESC, SILVER DESC, BRONZE DESC
+```
 
---16. Identify which country won the most gold, most silver and most bronze medals in each olympic games.
-
-;WITH CTE_REGION_MEDALS AS
+## [Question #16](#case-study-questions)
+> Identify which country won the most gold, most silver and most bronze medals in each olympic games.
+```sql
+WITH CTE_REGION_MEDALS AS
 (
 	SELECT 
 		ae.Games,
@@ -274,11 +279,12 @@ ORDER BY GoldMedalWins DESC
 			CONCAT(FIRST_VALUE(T.region) OVER (PARTITION BY T.GAMES ORDER BY T.SILVER DESC), '-', FIRST_VALUE(T.SILVER) OVER (PARTITION BY T.GAMES ORDER BY T.SILVER DESC)) AS MAX_SILVER,
 			CONCAT(FIRST_VALUE(T.region) OVER (PARTITION BY T.GAMES ORDER BY T.BRONZE DESC), '-', FIRST_VALUE(T.BRONZE) OVER (PARTITION BY T.GAMES ORDER BY T.BRONZE DESC)) AS MAX_BRONZE
 		FROM T
+```
 
-
---17. Identify which country won the most gold, most silver, most bronze medals and the most medals in each olympic games.
-
-;WITH CTE_REGION_MEDALS AS
+## [Question #17](#case-study-questions)
+> Identify which country won the most gold, most silver, most bronze medals and the most medals in each olympic games.
+```sql
+WITH CTE_REGION_MEDALS AS
 (
 	SELECT 
 		ae.Games,
@@ -310,10 +316,12 @@ ORDER BY GoldMedalWins DESC
 			CONCAT(FIRST_VALUE(T.region) OVER (PARTITION BY T.GAMES ORDER BY T.BRONZE DESC), '-', FIRST_VALUE(T.BRONZE) OVER (PARTITION BY T.GAMES ORDER BY T.BRONZE DESC)) AS MAX_BRONZE,
 			CONCAT(FIRST_VALUE(T.region) OVER (PARTITION BY T.GAMES ORDER BY All_Medals DESC), '-', FIRST_VALUE(T.All_Medals) OVER (PARTITION BY T.GAMES ORDER BY T.All_Medals DESC)) AS MAX_MEDALS
 		FROM T
+```
 
---18.Which countries have never won gold medal but have won silver/bronze medals?
-
-;WITH CTE_REGION_MEDALS AS
+## [Question #18](#case-study-questions)
+> Which countries have never won gold medal but have won silver/bronze medals?
+```sql
+WITH CTE_REGION_MEDALS AS
 (
 	SELECT 
 		r.region,
@@ -342,10 +350,12 @@ ORDER BY GoldMedalWins DESC
 	)
 		SELECT * FROM T 
 		WHERE T.GOLD = 0
+```
 
---19.Write SQL Query to return the sport which has won India the highest no of medals.
-
-;WITH CTE_REGION_MEDALS AS
+## [Question #19](#case-study-questions)
+> Write SQL Query to return the sport which has won India the highest no of medals.
+```sql
+WITH CTE_REGION_MEDALS AS
 (
 	SELECT 
 		r.region,
@@ -363,10 +373,12 @@ ORDER BY GoldMedalWins DESC
 	FROM CTE_REGION_MEDALS
 	WHERE region = 'INDIA'
 	GROUP BY Sport
-	ORDER BY MEDAL_WON DESC
+	ORDER BY MEDAL_WON DESC;
+```
 
---20. Break down all olympic games where India won medal for Hockey and how many medals in each olympic games
-
+## [Question #20](#case-study-questions)
+> Break down all olympic games where India won medal for Hockey and how many medals in each olympic games
+```sql
 SELECT 
 	r.region,
 	ae.Sport,
@@ -378,4 +390,5 @@ INNER JOIN dbo.noc_regions r
 WHERE Medal in ('gold','silver','bronze')
 	AND r.region = 'INDIA'
 	AND ae.Sport = 'Hockey'
-GROUP BY r.region,ae.Sport,ae.games
+GROUP BY r.region,ae.Sport,ae.games;
+```
