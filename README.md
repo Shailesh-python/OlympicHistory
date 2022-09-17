@@ -1,5 +1,7 @@
 # OlympicHistory
 
+![image](https://github.com/Shailesh-python/OlympicHistory/blob/main/Olympic%20Pic.jpeg)
+
 ## techTFQ : [Like & Subscribe](https://www.youtube.com/c/techTFQ)
 Hi, This is Thoufiq! On this channel, He teaches SQL, Python and Database concepts in the field of Data Analytics and Data Science in the most simplest manner possible. If this excites you then do consider subscribing.
 
