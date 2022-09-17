@@ -1,7 +1,12 @@
 # OlympicHistory
 
-# DataLink : 
-https://techtfq.com/blog/practice-writing-sql-queries-using-real-dataset
+## techTFQ : [Like & Subscribe](https://www.youtube.com/c/techTFQ)
+Hi, This is Thoufiq! On this channel, He teaches SQL, Python and Database concepts in the field of Data Analytics and Data Science in the most simplest manner possible. If this excites you then do consider subscribing.
+
+You will also find videos covering interview questions and also videos where I provide career guidance in the field of Data Analytics and Data Science which should help you find your dream job.
+
+
+## [DataLink & Solutions](https://techtfq.com/blog/practice-writing-sql-queries-using-real-dataset)
 
 ## [Question #1](#case-study-questions)
 > How many olympics games have been held?
