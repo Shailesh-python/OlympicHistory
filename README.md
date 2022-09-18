@@ -1,4 +1,5 @@
-# OlympicHistory
+# OlympicHistory 
+<img src='https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)'/>
 
 ![image](https://github.com/Shailesh-python/OlympicHistory/blob/main/Olympic%20Pic.jpeg)
 
@@ -245,6 +246,11 @@ WITH CTE_REGION_MEDALS AS
 			FOR MEDAL IN ([gold],[silver],[bronze])
 		) AS PIVOT_TABLE
 	ORDER BY GOLD DESC, SILVER DESC, BRONZE DESC
+```
+
+## [Question #15](#case-study-questions)
+>
+```sql
 ```
 
 ## [Question #16](#case-study-questions)
